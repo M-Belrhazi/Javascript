@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="cars" id="cars">
+
+    </select>
+
+    <script src="jquery-3.6.0.js"></script>
+
+    <script>
+        const cars = [
+            {brand: 'Peugeot', make:"208"},
+            {brand: 'Renault', make:"Clio"},
+            {brand: 'Citroën', make:"C3"},
+            {brand: 'Peugeot', make:"3008"},
+            {brand: 'Citroën', make:"C4"},
+            {brand: 'Peugeot', make:"308"},
+            {brand: 'Peugeot', make:"5008"},
+            {brand: 'Peugeot', make:"508"}
+        ];
+
+        // const sortedCars = cars.sort((car1, car2) => (car1.brand < car2.brand) ? -1 : ((car1.brand < car2.brand) ? 1 : 0) );
+
+        let sortedCars = {};
+
+        cars.forEach(car => {
+            if (sortedCars[car.brand] === undefined) {
+                sortedCars[car.brand] = [];
+            }
+
+            sortedCars[car.brand].push(car);
+        });
+
+        console.log(sortedCars);
+
+        Object.keys(sortedCars).forEach((brand) => {
+            $("#cars").append(`<optgroup label = ${brand} ><optgroup>`);
+            
+                sortedCars[brand].forEach(car => {
+                    $(`optgroup[label = ${brand}]`).append(
+                        `<option value=${car.make}>${car.make}</option>`
+                    );
+                })
+        })
+
+
+
+
+
+    </script>
+</body>
+</html>

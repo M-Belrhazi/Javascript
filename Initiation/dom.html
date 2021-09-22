@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        #main{
+            margin-top: 20px;
+        }
+        .container{
+            margin-left: auto;
+            margin-right: auto;
+            width: 1000px;
+            background: red;
+            margin-bottom: 10px;
+            height: 50px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="main" class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+
+    <script>
+        let element = document.getElementById('main');
+        element.innerHTML = "Un super contenu";
+
+        let containers = document.getElementsByClassName('container');
+        
+        for(var i = 0; i < containers.length; i++) {
+            containers.item(i).innerHTML = "Hello World!";
+        }
+
+        console.log(containers);
+        console.log(element);
+
+        let styleEl = window.getComputedStyle(element); // pour avoir toutes les prop css
+
+        element.style.textAlign = 'center';
+
+
+    </script>
+</body>
+</html>

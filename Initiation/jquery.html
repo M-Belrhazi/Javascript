@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        #main{
+            margin-top: 20px;
+        }
+        .container{
+            margin-left: auto;
+            margin-right: auto;
+            width: 1000px;
+            background: red;
+            margin-bottom: 10px;
+            height: 50px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div id="main" class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div> -->
+    <form action="">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">    
+        </div>
+    
+        <!-- <div>
+            <label for="age">Age</label>
+            <input type="text" name="age" id="age">    
+        </div> -->
+
+        <div>
+            <label for="dob">Date of birth</label>
+            <select name="dob" id="dob">
+                <!-- 1980 - 2001 -->
+            </select>
+        </div>
+
+        <!-- exo : remettre le champ age à sa place -->
+    
+        <div>
+            <input type="submit" value="Envoyer">    
+        </div>
+    </form>
+
+    <script src="jquery-3.6.0.js"></script>
+
+    <script>
+        // let nativeElement = document.getElementById('main');
+        // let element = $("#main");
+
+        // element.html('Un super contenu. ');
+
+        // let containers = $(".container");
+        // containers.html("Hello World"); //JQuery le fait sur chaque élément tout seul
+
+        // element.css('background', 'blue');
+
+        // $('#main').on('click', function (event) {
+        //     console.log('clicked');
+        //     event.preventDefault(); //On bloque l'event par default, on empêche l'évenement par défault
+        // });
+
+        $('form').on('submit', function (event) {
+            event.preventDefault();
+
+            console.log($('#age').val());
+
+            let age = parseInt($("#age").val());
+
+            $("#age").val(age + 10);
+
+
+            console.log("form submitted");
+
+            // $(this).unbind('submit');
+            // $(this).submit();
+        });
+
+        let template = `
+        <div>
+            <label for="age">Age</label>
+            <input type="text" name="age" id="age">    
+        </div>
+        `;
+
+        $('#name').parent().after(template);
+
+        let template1 = '';
+        const prototype = `<option value="__dob__">__dob__</option>`;
+
+        for(var i = 1980; i < 2002; i++){
+            //$("#dob").append(`<option>${i}</option>`);
+            template1 += prototype.replaceAll('__dob__', i);
+        }
+
+        $('#dob').append(template1);
+
+        //console.log($("#dob").children().last().val());
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
