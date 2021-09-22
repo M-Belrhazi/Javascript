@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suite</title>
+</head>
+<body>
+    <script>
+
+        let names = ["Khalid", "Moustakime", "Moussa"];
+
+        // console.log(`${names[0]}, ${names[1]}, ${names[2]}`);
+
+        let namesString = "";
+
+        for(let i = 0; i < names.length; i++){
+            i == (names.length - 1) ? namesString += names[i] : namesString += names[i] + ", ";
+        }
+
+        console.log(namesString);
+
+        let persons = [
+            {name: "Stephane", age: 45},
+            {name: "Khalid", age: 25},
+            {name: "Maha", age: 32},
+            {name: "Zaky", age: 28}
+        ];
+
+        //Somme des ages
+        //Moyenne des ages
+
+        let sommeAges = 0;
+
+        persons.forEach(element => {
+            sommeAges += element.age;
+        });
+
+        console.log(sommeAges);
+
+        let moyAges = sommeAges / persons.length;
+
+        console.log(moyAges);
+
+        //
+
+        const livingThings = [
+            {type: 'animal', 'race': 'Elephant', age: 75},
+            {type: 'animal', 'race': 'Whale', age: 125},
+            {type: 'animal', 'race': 'Dog', age: 5},
+            {type: 'human', age: 35},
+            {type: 'human', age: 25}
+        ]
+
+        // Somme des ages des animaux
+        // Moyenne d'age des humans
+        // Oldest of the list
+
+        let sommeAgeAnimal = 0;
+        let sommeAgeHuman = 0;
+        let nbHuman = 0;
+        let oldestAge = livingThings[0].age;
+        let oldestIndex = 0;
+
+
+        for(let i=0; i< livingThings.length ; i++){
+            if (livingThings[i].type == 'animal') {
+                sommeAgeAnimal += livingThings[i].age;
+            }
+
+            if (livingThings[i].type == 'human') {
+                sommeAgeHuman += livingThings[i].age;
+                nbHuman ++;
+            }
+
+            if(livingThings[i].age > oldestAge){
+                oldestAge = livingThings[i].age;
+                oldestIndex = i;
+            }
+        }
+
+        console.log(sommeAgeAnimal);
+        console.log(sommeAgeHuman / nbHuman);
+        console.log(livingThings[oldestIndex]);
+
+
+
+
+
+
+
+
+        
+
+
+
+        
+        
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

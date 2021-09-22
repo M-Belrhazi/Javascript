@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // console.log(console);
+        // console.warn('ok');
+        // console.error('ok');
+
+        // création de variable : 3 manières
+        
+        //myvar = 'ma super variable' //définition de manière globale
+        // var myvar = 'ma super variable' // définition dans un scope
+        let myvar = 'ma super variable'; //avec let, plus de contraintes, on ne peut pas redéfinir une variable dans le même contexte, définition dans un scope mais avec plus de contraintes
+        myvar = 2;
+
+        //en javacript, 2 objets importants : window et document(objets html)
+
+        // window.alert('ok');
+        // window.confirm('ok');
+        // window.prompt('ok');
+
+        // // On peut enlever l'objet window, c'est pareil parce qu'il sait
+        // alert('ok');
+
+        // let isConfirmed = confirm('ok'); // => boolean
+        // let name = prompt('Name'); // => retourne saisie ou null
+        // // Donc on peut les mettre dans des variables
+
+        // console.log(isConfirmed, name);
+
+        const maconstante = 'toto';
+
+        function getName() {
+            console.log("Lolo");
+        }
+
+        getName();
+
+        let getName1 = function () {
+            return 'Lolo';
+        };
+
+        let getName2 = () => {
+            return 'Lolo';
+        };
+
+        //il faut forcément mettre le mot let pour définir les fonctions car ça nous permet de ne pas redéfinir dans le même contexte
+
+
+        // console.log(alert('ok'));
+        // console.log(confirm('ok'));
+        // console.log(prompt('ok'));
+
+        // il faut essayer d'éviter les else et les elseif
+
+        let myArray = ['stephane', 'maha', 'mohamed'];
+
+        console.log(myArray.length);
+
+        for(var i = 0; i < myArray.length; i++) {
+            console.log(myArray[i]);
+        }
+
+        myArray.forEach(element => {
+            console.log(element);        
+        });
+
+        let person = {};
+
+        person.name = 'Khalid';
+        person.age = 25;
+
+        //on peut définir les prop et méthodes direct dans la décla ou après, no prob
+
+        let s = "chaine de charset";
+
+        // si on ne passe pas de param alors que arg, l'arg en question vaut undefined
+
+        
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

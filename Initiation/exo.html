@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice</title>
+</head>
+<body>
+    <script>
+
+        let persons = {
+            s: {name: 'Stephane', age: 43},
+            m: {name: 'Mohamed', age: 15},
+            a: {name: 'Maha', age: 35},
+            k: {name: 'Khalid', age: 25}
+        };
+
+        for (a in persons) {
+            console.log(`${persons[a].name} a ${persons[a].age} ans.`);
+        }
+
+        //console.log(persons["s"]);
+
+
+        console.log(Object.keys(persons));
+
+        Object.keys(persons).forEach(property => {
+            console.log(`${persons[property].name} a ${persons[property].age} ans `);
+        });
+
+        //principe du prototype à retenir, créer un prototype, fonction du remplacement, et boucle séparée
+
+        const prototypeSentence = "__name__ a __age__ ans";
+
+        let getSentence = function (name, age) {
+            return prototypeSentence
+                            .replace('__name__', name)
+                            .replace('__age__', age);
+        }
+
+        Object.keys(persons).forEach(property => {
+            console.log(getSentence(persons[property].name, persons[property].age));
+        });
+
+
+
+        // Other solution :
+        
+        // for (var i=0; i < Object.keys(persons); i++){
+        //     console.log(`${persons[i].name} a ${persons[i].age} ans.`)
+        // }
+
+        //Les crochets, la même chose que ordre tableau mais marche uniquement si numéros dans propriétés
+
+        //////// On passe aux tableaux, méthodes sur les tableaux
+
+        // let people = [
+        //     {name: 'Stephane', age: 43},
+        //     {name: 'Mohamed', age: 15},
+        //     {name: 'Maha', age: 35},
+        //     {name: 'Khalid', age: 25}
+        // ];
+
+        // people.pop();
+        // console.log(people);
+
+        // people.shift();
+        // console.log(people);
+
+        // let names = ["khalid", "moussa", "moustakine"];
+        // let namesting = names.join(", ");
+
+        // let concatnamespersons = names.concat(people);
+        // console.log(concatnamespersons);
+
+        let now = new Date();
+        console.log(now);
+
+        // faire attention aux dates, aux heures (minuit en France, ou tous les pays à partir de minuit ?, généralement, on veut une heure fixe donc par rapport au serveur pour un événement, le lancement d'une période d'achat ou de soldes)
+        // le navi retourne l'heure de l'ordi
+
+        
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algo</title>
+</head>
+<body>
+    <script>
+        let persons = {
+            "moussa": {
+                name: 'Moussa',
+                job: 'developer',
+                'technologies': ['html', 'css', 'javascript', 'php'],
+                cost: 600,
+                experience: 5
+            },
+            "khalid": {
+                name: 'Khalid',
+                job: 'developer',
+                'technologies': ['php', 'nodejs', 'java'],
+                cost: 800,
+                experience: 8
+
+            },
+            "maha": {
+                name: 'Maha',
+                job: 'developer',
+                'technologies': ['php', 'angular', 'java', 'javascript'],
+                cost: 500,
+                experience: 2
+            }
+        }
+
+        // Trouver le meilleur canddidat pour nodejs
+        // Trouver le meilleur candidat pour javascript
+        // Trouver le meilleur projet pour un projet PHP sachant que exp 5 mettrait 35 jours
+        // exp 8 mettrait 20 jours
+        // exp 2 mettrait 50 jours
+        // cout par jour
+        // regarder les méthodes map et filter
+        
+        let developers = [];
+
+        let bestDevFor = function (tech) {
+            let developers = [];
+            let bestcost = Infinity;
+            let bestdev = {};
+            let totalCost = Infinity;
+
+            for(developer in persons){
+                if(persons[developer].technologies.includes(tech)){
+                    developers.push(persons[developer]);
+                }
+            }
+
+            developers.forEach(dev => {
+                switch (dev.experience) {
+                    case 8 :
+                        totalCost = 20*dev.cost;
+                        break;
+                    case 5 :
+                        totalCost = 35*dev.cost;
+                        break;
+                    case 2 :
+                        totalCost = 50*dev.cost;
+                        break;
+                    default :
+                         console.log("exp bizarre");
+                }
+                if(totalCost < bestcost){
+                bestcost = totalCost;
+                bestdev = dev;
+                }
+            });
+
+            return bestdev;
+
+        };
+
+        console.log(bestDevFor("php"));
+
+    </script>
+</body>
+</html>
+
