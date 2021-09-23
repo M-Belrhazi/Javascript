@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="jquery-3.6.0.js"></script>
+
+    <script>
+        let people = [];
+
+        $.get("/person.json")
+        .then(function(response) {
+            $("body").append("<table></table>");
+            $("table").css("border", "1px solid black");
+
+            $("table").append(`<tr id="head"></tr>`);
+
+            let titles = {};
+
+            response.forEach(element => {
+                Object.keys(element).forEach(prop => {
+                    titles[prop] = 1;
+                });
+            });
+
+            console.log(titles);
+
+            Object.keys(titles).forEach(prop => {
+                $("#head").append(`<td>${prop}</td>`);
+            });
+            
+
+            response.forEach((element, key) => {
+                $("table").append(`<tr id=${key}></tr>`);
+                Object.keys(element).forEach(prop =>
+                {
+                    $(`tr#${key}`).append(`<td>${element[prop]}</td>`);
+                });
+            });
+
+            $("td").css("border", "1px solid black");
+        });
+
+        //OTHER SOLUTION :
+
+        //make a template !!
+
+    //     const prototype = `
+    //     <table>
+    //         <thead>
+    //             <tr>
+    //                 __headers__
+    //             </tr>
+    //         </thead>
+    //         <tbody>
+    //             <tr>
+    //                 __body__
+    //             </tr>
+    //         </tbody>
+    //     </table>
+    //     `;
+
+
+    //     $.get('/person.json')
+    //     .then(function(response){
+    //         let headersTemplate = '';
+    //         let bodyTemplate = '';
+    //         let headers = Object.keys(response[0]);
+    //         headers.forEach(function(header) {
+    //             headersTemplate += `<th>${header}</th>`
+    //         });
+
+    //         let template = prototype.replace(`__headers__`, headersTemplate);
+
+    //         $.each(response, function(index, person) {
+    //             bodyTemplate += `
+    //             <tr>
+    //                 <td>${person.name}</td>
+    //                 <td>${person.age}</td>
+    //                 <td>${person.cars.join(', ')}</td>
+    //             </tr>
+    //             `
+    //         });
+
+    //         template = template.replace('__body__', bodyTemplate);
+    //         $('body').prepend(template);
+    //     });
+
+    // </script>
+
+</body>
+</html>
