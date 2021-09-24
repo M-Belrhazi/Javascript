@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="jquery-3.6.0.js"></script>
+
+    <script>
+        // reprendre le tableau person.json et le stocker dans le local storage (nom, age, voiture)
+        // Lister les personnes dans un tableau HTML dont la dernière colonne est une action pour modifier la ligne
+        // Faire un formulaire pour modifier une personne
+        // Au clic sur modifier, afficher un formulaire avec les données de la personne préremplie dedans, et modifier la ligne en localStorage à la soumission du formulaire
+
+
+        $.get("/person.json")
+        .then(function(response) {
+
+            $("body").append("<table></table>");
+            $("table").css("border", "1px solid black");
+
+            $("table").append(`<tr id="head"></tr>`);
+
+            let titles = {};
+
+            response.forEach((element, key) => {
+                Object.keys(element).forEach(prop => {
+                    localStorage.setItem(prop+key, element[prop]);
+                    titles[prop] = 1;
+                });
+                
+            });
+
+            response.forEach((element, key) => {
+                $("table").append(`<tr id=${key}></tr>`);
+                Object.keys(element).forEach(prop =>
+                {
+                    $(`tr#${key}`).append(`<td>${element[prop]}</td>`);
+                });
+                $(`tr#${key}`).append(`<td><button>Modifier</button></td>`)
+            });
+
+
+            Object.keys(titles).forEach(prop => {
+                $("#head").append(`<td>${prop}</td>`);
+            });
+
+            $("td").css("border", "1px solid black");
+
+            $("button").on("click", function() {
+                $("body").append(`
+                <form action="">
+                    <label for="name">Name</label>
+                    <input type="text" id="name">
+                    <label for="age">Age</label>
+                    <input type="number" id="age">
+                    <label for="cars">Cars</label>
+                    <input type="text" id="cars">
+                    <input type="submit">
+                </form>
+                `);
+
+                let id = $(this).parent().parent().attr("id");
+
+
+                $("form").on("submit", function(event) {
+                    event.preventDefault();
+                    Object.keys(titles).forEach(prop => {
+                        localStorage.setItem(prop+id, $(`input#${prop}`).val());
+                    });
+                });
+
+
+                console.log($(this).parent().parent().attr("id"));
+            });
+
+
+        });
+
+
+
+        //document.cookie = `name=Khalid; expires=${new Date}`;
+        
+    </script>
+</body>
+</html>

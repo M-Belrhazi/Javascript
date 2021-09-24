@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+<body>
+
+    <script src="jquery-3.6.0.js"></script>
+
+    <script>
+
+        $.get("https://2i-js.iknsa.xyz/create-user.php")
+        .then(function (response) {
+            $("body").append(response);
+            $("body").prepend('<div id="message"></div>');
+
+            $("form").on("submit", function(event) {
+                event.preventDefault();
+
+                let name = $("#name").val();
+                let age = $("#age").val();
+
+                //on peut faire data = $(this).serialize pour avoir le data de la form prêt à être envoyé 
+
+                $.post("https://2i-js.iknsa.xyz/create-user.php", 
+                {name: name, age: age})
+                .then(function (result) {
+                    console.log(result);
+                    if(result.success === undefined){
+                        $("#message").html('<div style="background: red;">Il y a une erreur</div>');    
+                    } else {
+                        $("#message").html('<div style="background: green;">Votre message a bien été soumis</div>');
+                    }
+                });
+
+
+            })
+        });
+
+
+    </script>
+</body>
+</html>
